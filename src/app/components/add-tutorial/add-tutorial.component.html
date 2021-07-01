@@ -1,0 +1,34 @@
+<div style="padding: 1%; border: solid white ;background-color: darkviolet; width: 50%; margin-left: 17%;" class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label style=" font-weight: bold; background-color: orange; border: solid black;" for="title"><b >Tytuł</b></label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="tutorial.title"
+          name="title"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label style="margin-top: 2%; font-weight: bold; background-color: orange; border: solid black;"><b>Opis</b></label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="tutorial.description"
+          name="description"
+        />
+      </div>
+  
+      <button (click)="saveTutorial()" class="btn btn-success">Dodaj</button>
+    </div>
+  
+    <div *ngIf="submitted">
+      <h4 style="border: solid black;background-color: orange;max-width: max-content; color: black;margin-left: 35%;"><b>Dodano do bazy</b></h4>
+      <button  class="btn btn-success" (click)="newTutorial()">Dodaj kolejny</button>
+    </div>
+  </div>
+  

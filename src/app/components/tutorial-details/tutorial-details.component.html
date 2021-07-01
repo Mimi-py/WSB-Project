@@ -1,0 +1,61 @@
+<div *ngIf="currentTutorial" class="edit-form">
+    <h4 style="font-weight: bold;">Rekord</h4>
+    <form>
+      <div class="form-group">
+        <label for="title" style="font-weight: bold;">Tytuł</label>
+        <input style="padding: 1%;"
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentTutorial.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description"style="font-weight: bold;">Opis</label>
+        <input style="padding: 1%;"
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentTutorial.description"
+          name="description"
+        />
+      </div>
+  
+      <div style="margin-left: 20%; margin-right: auto;" class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentTutorial.published ? "Opublikowany" : "Oczekuje" }}
+      </div>
+    </form>
+    <button style="background-color: chartreuse; margin-right: 10%;" type="submit" class="badge badge-success" (click)="updateTutorial()">
+      Edytuj
+    </button>
+    <button
+    style="background-color: gray;"
+      class="badge badge-primary mr-2"
+      *ngIf="currentTutorial.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button>
+    <button style="background-color: blue;"
+      *ngIf="!currentTutorial.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Opublikuj
+    </button>
+  
+    <button style="background-color: red; margin-left: 10%;" class="badge badge-danger mr-2" (click)="deleteTutorial()">
+      Usuń
+    </button>
+  
+    
+    <p>{{ message }}</p>
+  </div>
+  
+  <div *ngIf="!currentTutorial">
+    <br />
+    <p>Error</p>
+  </div>
+  
